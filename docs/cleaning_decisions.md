@@ -4,7 +4,7 @@
 
 Data: events\_raw (10% user sample, REES46, Oct 2019, 4,224,899 rows).
 
-Rule: events\_raw is never modified. A cleaned view is created on top of it.
+Rule: events\_raw is never modified. A cleaned table is created on top of it.
 
 
 
@@ -52,9 +52,7 @@ Rule: events\_raw is never modified. A cleaned view is created on top of it.
 
 
 
-\- Duplicates are mostly cart events (3,004 extra rows). The data cannot tell if
-
-&#x20; these are double clicks or logging errors.
+\- Duplicates are mostly cart events (3,004 extra rows). The data cannot tell if these are double clicks or logging errors.
 
 \- Nulls are not filled with 0. 'unknown' keeps them visible as a group.
 
@@ -62,5 +60,5 @@ Rule: events\_raw is never modified. A cleaned view is created on top of it.
 
 \- event\_type has only view, cart, purchase in this sample (no remove\_from\_cart).
 
-\- Cleaned view: events\_clean (to be created in sql/03\_analysis.sql).
+\- Cleaned table: events\_clean (to be created in sql/03\_clean.sql).
 
