@@ -1,0 +1,10 @@
+# Jupyter auto-backups
+.ipynb_checkpoints/
+
+# Helper script (notebook is the main work)
+scripts/
+
+# Never upload raw data
+*.csv
+*.parquet
+*.zip
