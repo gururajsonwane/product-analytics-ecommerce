@@ -23,3 +23,21 @@ SELECT
     COUNT(*) FILTER (WHERE price < 0) AS negative_prices,
     COUNT(*) FILTER (WHERE price = 0) AS zero_prices
 FROM events_raw;
+
+
+-- Check 4: Which event types have the duplicate rows?
+SELECT event_type, SUM(c - 1) AS extra_rows, COUNT(*) AS duplicate_groups
+FROM (
+    SELECT event_type, COUNT(*) AS c
+    FROM events_raw
+    GROUP BY event_time, event_type, product_id, category_id,
+             category_code, brand, price, user_id, user_session
+    HAVING COUNT(*) > 1
+) t
+GROUP BY event_type;
+
+-- Check 5: Which event types have zero price?
+SELECT event_type, COUNT(*) AS zero_price_rows
+FROM events_raw
+WHERE price = 0
+GROUP BY event_type;
